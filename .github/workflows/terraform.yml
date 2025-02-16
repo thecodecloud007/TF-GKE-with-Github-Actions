@@ -23,6 +23,9 @@ jobs:
           echo "${{ secrets.GCP_SA_KEY_BASE64 }}" | base64 --decode > "${HOME}/gcp-key.json"
           gcloud auth activate-service-account --key-file="${HOME}/gcp-key.json"
 
+      - name: Verify Google Cloud Authentication
+        run: gcloud auth list
+
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
 
